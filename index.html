@@ -1,0 +1,452 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maness Kaombe | Primary School Teacher</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --rose: #e8748a;
+      --blush: #f4b8c4;
+      --cream: #fdf5f0;
+      --mauve: #c0658a;
+      --deep: #7c3a58;
+      --soft: #fce8ef;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background-color: var(--cream); color: #3a2030; overflow-x: hidden; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100svh;
+      background: linear-gradient(160deg, #fce8ef 0%, #f7d6e0 40%, #eedaea 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -80px; right: -80px;
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, #e8748a2a 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: 60px; left: -60px;
+      width: 240px; height: 240px;
+      background: radial-gradient(circle, #c0658a1a 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    /* mobile: column */
+    .hero-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100svh;
+      padding: 3.5rem 1.5rem 5rem;
+      gap: 2.5rem;
+      position: relative;
+      z-index: 10;
+    }
+    /* desktop: row */
+    @media (min-width: 768px) {
+      .hero-inner {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 5rem;
+        padding: 3rem 6rem;
+      }
+      .hero-text { text-align: left; }
+      .hero-tags { justify-content: flex-start; }
+    }
+
+    .hero-text { text-align: center; }
+
+    .badge {
+      display: inline-block;
+      background: white;
+      color: var(--mauve);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--blush);
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 12px #e8748a18;
+    }
+
+    .hero-name {
+      font-size: clamp(2.6rem, 7vw, 4.4rem);
+      line-height: 1.1;
+      color: var(--deep);
+    }
+    .hero-name span { color: var(--rose); font-style: italic; }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: #7c3a58bb;
+      margin-top: 0.75rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.4rem;
+      justify-content: center;
+    }
+    .hero-tag {
+      background: white;
+      color: var(--deep);
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.3rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid var(--blush);
+      box-shadow: 0 1px 6px #e8748a10;
+    }
+
+    .avatar-frame {
+      width: min(72vw, 300px);
+      flex-shrink: 0;
+      aspect-ratio: 3/4;
+      border-radius: 60% 60% 55% 55% / 55% 55% 45% 45%;
+      overflow: hidden;
+      border: 4px solid white;
+      box-shadow: 0 20px 60px #c0658a30, 0 4px 16px #e8748a25;
+    }
+    @media (min-width: 768px) {
+      .avatar-frame { width: clamp(240px, 26vw, 320px); }
+    }
+
+    .avatar-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.5rem; color: white;
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem;
+      background: linear-gradient(160deg, #e8748a, #c0658a 50%, #7c3a58);
+    }
+    .avatar-placeholder .initials-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      opacity: 0.65;
+      text-transform: uppercase;
+    }
+
+    .scroll-hint {
+      position: absolute; bottom: 1.4rem; left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0.3rem; color: var(--mauve);
+      font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── SECTIONS ── */
+    .section { padding: 3.5rem 1.5rem; }
+    @media (min-width: 768px) { .section { padding: 4.5rem 6rem; } }
+
+    .section-label {
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--rose); font-weight: 500; margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      color: var(--deep); margin-bottom: 1rem; line-height: 1.2;
+    }
+    .section-body { font-size: 0.95rem; line-height: 1.8; color: #5a3045; }
+    .divider {
+      width: 3rem; height: 3px;
+      background: linear-gradient(90deg, var(--rose), var(--blush));
+      border-radius: 999px; margin-bottom: 1.2rem;
+    }
+
+    /* ── ANIMATE ── */
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════ HERO ════════════════ -->
+  <section class="hero">
+    <div class="hero-inner">
+
+      <!-- Text (left on desktop, top on mobile) -->
+      <div class="hero-text fade-up">
+        <div class="badge">✦ Primary School Educator</div>
+        <h1 class="hero-name">Maness<br/><span>Kaombe</span></h1>
+        <p class="hero-subtitle">Shaping little minds,<br/>one lesson at a time.</p>
+        <div class="hero-tags">
+          <span class="hero-tag">👩‍🏫 Teacher</span>
+          <span class="hero-tag">🎓 T2 Certified</span>
+          <span class="hero-tag">📜 MSCE</span>
+          <span class="hero-tag">💍 Married</span>
+        </div>
+      </div>
+
+      <!-- Image (right on desktop, bottom on mobile) -->
+     <div class="avatar-frame fade-up" style="transition-delay:0.2s;">
+  <img src="./mane.png" alt="Maness Kaombe" style="width:100%; height:100%; object-fit:cover; object-position:center top;" />
+</div>
+
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ════════════════ ABOUT ════════════════ -->
+  <section class="section fade-up">
+    <p class="section-label">About Me</p>
+    <div class="divider"></div>
+    <h2 class="section-title">A Passionate Educator & Devoted Wife</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+      <p class="section-body">
+        I am Maness Kaombe, a dedicated primary school teacher with a deep love for education and child development. With both a T2 Certificate in Education and an MSCE qualification, I bring professional expertise and heartfelt commitment to my classroom every single day.
+      </p>
+      <p class="section-body">
+        As a married woman, I understand the value of nurturing relationships — and I bring that same warmth and care into how I connect with every child I teach. I believe every learner deserves patient guidance, encouragement, and the joy of discovery.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════ TEACHING PHILOSOPHY ════════════════ -->
+  <section class="section fade-up" style="background: var(--soft);">
+    <p class="section-label">What I Do</p>
+    <div class="divider"></div>
+    <h2 class="section-title">My Teaching Philosophy</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-6">
+
+      <div class="fade-up bg-white rounded-2xl p-6 shadow-sm border border-pink-100 hover:-translate-y-1 hover:shadow-lg transition-all duration-200 cursor-default">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
+             style="background: linear-gradient(135deg,#f4b8c4,#e8748a);">📚</div>
+        <h3 class="font-semibold text-base mb-2" style="color:var(--deep); font-family:'Playfair Display',serif;">
+          Foundational Learning
+        </h3>
+        <p class="text-sm leading-relaxed" style="color:#9a6070;">
+          Building strong literacy and numeracy skills in young learners using creative, hands-on approaches that make learning genuinely enjoyable.
+        </p>
+      </div>
+
+      <div class="fade-up bg-white rounded-2xl p-6 shadow-sm border border-pink-100 hover:-translate-y-1 hover:shadow-lg transition-all duration-200 cursor-default" style="transition-delay:0.1s;">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
+             style="background: linear-gradient(135deg,#f4b8c4,#e8748a);">🌱</div>
+        <h3 class="font-semibold text-base mb-2" style="color:var(--deep); font-family:'Playfair Display',serif;">
+          Child-Centred Growth
+        </h3>
+        <p class="text-sm leading-relaxed" style="color:#9a6070;">
+          Every child is unique. I tailor my approach to meet each student where they are and help them flourish at their own natural pace.
+        </p>
+      </div>
+
+      <div class="fade-up bg-white rounded-2xl p-6 shadow-sm border border-pink-100 hover:-translate-y-1 hover:shadow-lg transition-all duration-200 cursor-default" style="transition-delay:0.2s;">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
+             style="background: linear-gradient(135deg,#f4b8c4,#e8748a);">🤝</div>
+        <h3 class="font-semibold text-base mb-2" style="color:var(--deep); font-family:'Playfair Display',serif;">
+          Community & Care
+        </h3>
+        <p class="text-sm leading-relaxed" style="color:#9a6070;">
+          Partnering with parents, colleagues, and the community to create a safe, inclusive environment where every child truly thrives.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════ CREDENTIALS ════════════════ -->
+  <section class="section fade-up">
+    <p class="section-label">Qualifications</p>
+    <div class="divider"></div>
+    <h2 class="section-title">Education & Credentials</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-6">
+
+      <div class="fade-up bg-white rounded-2xl p-6 border-t-4 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-200 cursor-default" style="border-top-color: var(--rose);">
+        <div class="w-14 h-14 rounded-full flex items-center justify-center text-2xl mb-4" style="background: var(--soft);">🎓</div>
+        <h3 class="font-semibold text-base mb-1" style="color:var(--deep); font-family:'Playfair Display',serif;">T2 Certificate in Education</h3>
+        <p class="text-xs font-medium uppercase tracking-wider mb-3" style="color:var(--rose);">Teaching Qualification</p>
+        <p class="text-sm leading-relaxed" style="color:#9a6070;">Primary Teacher Training Certificate — qualified to teach all core primary subjects with professional competency.</p>
+      </div>
+
+      <div class="fade-up bg-white rounded-2xl p-6 border-t-4 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-200 cursor-default" style="border-top-color: var(--mauve); transition-delay:0.1s;">
+        <div class="w-14 h-14 rounded-full flex items-center justify-center text-2xl mb-4" style="background: var(--soft);">📜</div>
+        <h3 class="font-semibold text-base mb-1" style="color:var(--deep); font-family:'Playfair Display',serif;">MSCE</h3>
+        <p class="text-xs font-medium uppercase tracking-wider mb-3" style="color:var(--mauve);">Malawi School Certificate</p>
+        <p class="text-sm leading-relaxed" style="color:#9a6070;">Malawi School Certificate of Education — a broad academic foundation across multiple disciplines at secondary level.</p>
+      </div>
+
+      <div class="fade-up bg-white rounded-2xl p-6 border-t-4 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-200 cursor-default" style="border-top-color: var(--deep); transition-delay:0.2s;">
+        <div class="w-14 h-14 rounded-full flex items-center justify-center text-2xl mb-4" style="background: var(--soft);">🏫</div>
+        <h3 class="font-semibold text-base mb-1" style="color:var(--deep); font-family:'Playfair Display',serif;">Currently Teaching</h3>
+        <p class="text-xs font-medium uppercase tracking-wider mb-3" style="color:var(--deep);">Active Educator</p>
+        <p class="text-sm leading-relaxed" style="color:#9a6070;">Actively serving as a primary school teacher, bringing dedication and enthusiasm to every classroom session daily.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════ CONTACT ════════════════ -->
+  <section class="fade-up" style="background: linear-gradient(135deg, var(--deep) 0%, var(--mauve) 100%);">
+    <div class="flex flex-col md:flex-row">
+
+      <!-- Left: Statement block -->
+      <div class="flex-1 px-8 py-12 md:px-14 md:py-16 flex flex-col justify-center">
+        <p class="text-xs font-medium tracking-widest uppercase mb-3" style="color: var(--blush);">✦ Get In Touch</p>
+        <h2 class="text-4xl md:text-5xl leading-tight mb-5 text-white" style="font-family:'Playfair Display',serif;">
+          Let's<br/><span style="font-style:italic; color:var(--blush);">Connect</span>
+        </h2>
+        <p class="text-sm leading-relaxed mb-8" style="color: #fce8efcc; max-width: 340px;">
+          Whether you're a parent, fellow educator, or community member — I'd love to hear from you. Let's work together to shape the future of our children.
+        </p>
+
+        <!-- Decorative quote -->
+        <blockquote class="pl-5 border-l-2 border-pink-300">
+          <p class="text-sm italic leading-relaxed" style="color: #fce8efdd;">
+            "The best teachers show you where to look, but don't tell you what to see."
+          </p>
+        </blockquote>
+      </div>
+
+      <!-- Right: Contact info cards -->
+      <div class="flex-1 px-8 py-12 md:px-14 md:py-16 flex flex-col justify-center gap-3">
+
+        <div class="flex items-center gap-4 rounded-2xl p-4 transition-all duration-200 hover:bg-white/20"
+             style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
+               style="background: rgba(255,255,255,0.15);">📧</div>
+          <div>
+            <p class="text-xs uppercase tracking-widest mb-0.5" style="color: var(--blush);">Email</p>
+            <p class="text-sm font-medium text-white">maness.kaombe@email.com</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 rounded-2xl p-4 transition-all duration-200 hover:bg-white/20"
+             style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
+               style="background: rgba(255,255,255,0.15);">📍</div>
+          <div>
+            <p class="text-xs uppercase tracking-widest mb-0.5" style="color: var(--blush);">Location</p>
+            <p class="text-sm font-medium text-white">Chikwawa, Malawi</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 rounded-2xl p-4 transition-all duration-200 hover:bg-white/20"
+             style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
+               style="background: rgba(255,255,255,0.15);">👩‍🏫</div>
+          <div>
+            <p class="text-xs uppercase tracking-widest mb-0.5" style="color: var(--blush);">Role</p>
+            <p class="text-sm font-medium text-white">Primary School Teacher · T2 Certified</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 rounded-2xl p-4 transition-all duration-200 hover:bg-white/20"
+             style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
+               style="background: rgba(255,255,255,0.15);">💍</div>
+          <div>
+            <p class="text-xs uppercase tracking-widest mb-0.5" style="color: var(--blush);">Personal</p>
+            <p class="text-sm font-medium text-white">Happily Married</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ FOOTER ════════════════ -->
+<footer style="background:#3a2030; color:#c8a0b0; text-align:center; padding:1.4rem 1rem; font-size:0.78rem;">
+  
+  <p>© <span id="year"></span> Maness Kaombe · Educator · Wife · Lifelong Learner</p>
+  
+  <p style="margin-top:0.35rem; color:#9a6070;">
+    Made with ♥ for education
+  </p>
+
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+  
+
+
+<!-- WhatsApp FAB -->
+<div style="
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+">
+  <a href="https://wa.me/265880893491"
+     target="_blank"
+     title="Chat on WhatsApp"
+     style="
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       width: 60px;
+       height: 60px;
+       background: #25D366;
+       color: white;
+       border-radius: 50%;
+       text-decoration: none;
+       box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+       transition: all 0.3s ease;
+     "
+     onmouseover="this.style.transform='scale(1.08)'"
+     onmouseout="this.style.transform='scale(1)'"
+  >
+
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.25.624 4.35 1.71 6.135L.057 23.882l5.888-1.63A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882c-2.023 0-3.9-.549-5.507-1.502l-.394-.234-4.083 1.133 1.152-3.981-.255-.408A9.84 9.84 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118S21.882 6.533 21.882 12 17.467 21.882 12 21.882z"/>
+    </svg>
+
+  </a>
+</div>
+
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Fire hero elements immediately on load
+    document.querySelectorAll('.hero-inner .fade-up').forEach(el => {
+      setTimeout(() => el.classList.add('visible'), 100);
+    });
+  </script>
+</body>
+</html>
